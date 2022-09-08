@@ -1,15 +1,31 @@
 @font-face {
   font-family: "lexend";
-  src: url("./resources//fonts/lexend.woff2") format("woff2"),
-    url("./resources//fonts//lexend.woff") format("woff");
+  src: url("./resources/fonts/lexend.woff2") format("woff2"),
+    url("./resources/fonts/lexend.woff") format("woff");
 }
 
 body {
-  font-family: "lexend", Fallback, sans-serif;
+  font-family: "lexend", Fallback, sans-serif !important;
   background-color: #F4F7FF !important;
 }
 
 .MuiDrawer-paper {
   border-radius: 0px 35px 35px 0px;
   border: none !important;
+}
+
+.MuiCard-root {
+  padding: 1.2rem 2rem !important;
+  box-shadow: 0px 2.5647px 7.05292px #DCE2F3 !important;
+  border-radius: 12.8235px !important;
+  height: 100% !important;
+}
+
+.MuiChip-root {
+  background: #DCF5E8 !important;
+  color: #4FD18B !important;
+}
+
+.MuiChip-root .MuiSvgIcon-root {
+  padding: 1.5px;
 }

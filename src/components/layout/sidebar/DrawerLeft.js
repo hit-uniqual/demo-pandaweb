@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -14,6 +15,7 @@ import ListItemText from '@mui/material/ListItemText';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import MenuIcon from '@mui/icons-material/Menu';
+import styled from 'styled-components';
 import blogs from '../../../resources/icons/blogs.svg';
 import contactus from '../../../resources/icons/contact-us.svg';
 import diversification from '../../../resources/icons/diversification.svg';
@@ -26,70 +28,213 @@ import overview from '../../../resources/icons/overview.svg';
 import settings from '../../../resources/icons/settings.svg';
 import watchlist from '../../../resources/icons/watchlist.svg';
 import applogo2 from '../../../resources/app-logo-2.png';
+import { styled as styledComp } from '@mui/material/styles';
+import Switch from '@mui/material/Switch';
 
 const drawerWidth = 240;
 
 function LeftDrawer(props) {
-  const { window } = props;
+  const { window, title, page } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
 
+  const Image = styled.img`
+    margin: 3rem 0 3rem 0;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  `;
+
+  const StyledLink = styledComp(Link)`
+    text-decoration: none;
+
+    &:focus, &:hover, &:visited, &:link, &:active {
+        text-decoration: none;
+    }
+  `;
+
+  const IOSSwitch = styledComp((props) => (
+    <Switch
+      focusVisibleClassName=".Mui-focusVisible"
+      disableRipple
+      {...props}
+    />
+  ))(({ theme }) => ({
+    width: 42,
+    height: 26,
+    padding: 0,
+    '& .MuiSwitch-switchBase': {
+      padding: 0,
+      margin: 2,
+      transitionDuration: '300ms',
+      '&.Mui-checked': {
+        transform: 'translateX(16px)',
+        color: '#fff',
+        '& + .MuiSwitch-track': {
+          backgroundColor: theme.palette.mode === 'dark' ? '#0099F' : '#0099F',
+          opacity: 1,
+          border: 0,
+        },
+        '&.Mui-disabled + .MuiSwitch-track': {
+          opacity: 0.5,
+        },
+      },
+      '&.Mui-focusVisible .MuiSwitch-thumb': {
+        color: '#33cf4d',
+        border: '6px solid #fff',
+      },
+      '&.Mui-disabled .MuiSwitch-thumb': {
+        color:
+          theme.palette.mode === 'light'
+            ? theme.palette.grey[100]
+            : theme.palette.grey[600],
+      },
+      '&.Mui-disabled + .MuiSwitch-track': {
+        opacity: theme.palette.mode === 'light' ? 0.7 : 0.3,
+      },
+    },
+    '& .MuiSwitch-thumb': {
+      boxSizing: 'border-box',
+      width: 22,
+      height: 22,
+    },
+    '& .MuiSwitch-track': {
+      borderRadius: 26 / 2,
+      backgroundColor: theme.palette.mode === 'light' ? '#E9E9EA' : '#39393D',
+      opacity: 1,
+      transition: theme.transitions.create(['background-color'], {
+        duration: 500,
+      }),
+    },
+  }));
+
   const drawer = (
     <div>
       <Toolbar>
-        <img className="img-fluid mt-5 mb-5 px-5" src={applogo2} alt="logo" />
+        <Image src={applogo2} alt="logo" />
       </Toolbar>
-      <List>
+      <List
+        sx={{
+          // selected and (selected + hover) states
+          '&& .Mui-selected, && .Mui-selected:hover': {
+            bgcolor: '#EEF8FD',
+            '&, & .MuiListItemIcon-root': {
+              color: '#00A3FF',
+            },
+          },
+          // hover states
+          '& .MuiListItemButton-root:hover': {
+            bgcolor: '#EEF8FD',
+            '&, & .MuiListItemIcon-root': {
+              color: '#00A3FF',
+            },
+          },
+        }}>
         {[
-          'Overview',
-          'My Farm',
-          'Monthly Harvest',
-          'Watchlist',
-          'Ideas',
-          'Diversification',
-          'Blogs',
-        ].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {
-                  [
-                    <img src={overview} alt="Overview" />,
-                    <img src={myfarm} alt="My Farm" />,
-                    <img src={monthlyharvest} alt="Monthly Harvest" />,
-                    <img src={watchlist} alt="Watchlist" />,
-                    <img src={ideas} alt="Ideas" />,
-                    <img src={diversification} alt="Diversification" />,
-                    <img src={blogs} alt="Blogs" />,
-                  ][index]
-                }
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
+          { link: '/overview', text: 'Overview' },
+          { link: '/my-farm', text: 'My Farm' },
+          { link: '/monthly-harvest', text: 'Monthly Harvest' },
+          { link: '/watchlist', text: 'Watchlist' },
+          { link: '/ideas', text: 'Ideas' },
+          { link: '/diversification', text: 'Diversification' },
+          { link: '/blogs', text: 'Blogs' },
+        ].map((data, index) => (
+          <StyledLink to={data.link} key={index}>
+            <ListItem sx={{ color: 'secondary.main' }} disablePadding>
+              <ListItemButton>
+                <ListItemIcon>
+                  {
+                    [
+                      <img src={overview} alt="Overview" />,
+                      <img src={myfarm} alt="My Farm" />,
+                      <img src={monthlyharvest} alt="Monthly Harvest" />,
+                      <img src={watchlist} alt="Watchlist" />,
+                      <img src={ideas} alt="Ideas" />,
+                      <img src={diversification} alt="Diversification" />,
+                      <img src={blogs} alt="Blogs" />,
+                    ][index]
+                  }
+                </ListItemIcon>
+                <ListItemText primary={data.text} />
+              </ListItemButton>
+            </ListItem>
+          </StyledLink>
         ))}
       </List>
       <Divider />
-      <List>
-        {['Settings', 'Contact Us', 'Feedback'].map((text, index) => (
-          <ListItem key={text} disablePadding>
+      <List
+        sx={{
+          // selected and (selected + hover) states
+          '&& .Mui-selected, && .Mui-selected:hover': {
+            bgcolor: '#EEF8FD',
+            '&, & .MuiListItemIcon-root': {
+              color: '#00A3FF',
+            },
+          },
+          // hover states
+          '& .MuiListItemButton-root:hover': {
+            bgcolor: '#EEF8FD',
+            '&, & .MuiListItemIcon-root': {
+              color: '#00A3FF',
+            },
+          },
+        }}
+      >
+        {[
+          { link: '/settings', text: 'Settings' },
+          { link: '/contact-us', text: 'Contact Us' },
+          { link: '/feedback', text: 'Feedback' },
+        ].map((data, index) => (
+          <StyledLink to={data.link} key={index}>
+            <ListItem sx={{ color: 'secondary.main' }} disablePadding>
+              <ListItemButton>
+                <ListItemIcon>
+                  {
+                    [
+                      <img src={settings} alt="Settings" />,
+                      <img src={contactus} alt="Contact Us" />,
+                      <img src={feedback} alt="Feedback" />,
+                    ][index]
+                  }
+                </ListItemIcon>
+                <ListItemText primary={data.text} />
+              </ListItemButton>
+            </ListItem>
+          </StyledLink>
+        ))}
+      </List>
+      <List
+        sx={{
+          mt: 5,
+          // selected and (selected + hover) states
+          '&& .Mui-selected, && .Mui-selected:hover': {
+            bgcolor: '#EEF8FD',
+            '&, & .MuiListItemIcon-root': {
+              color: '#00A3FF',
+            },
+          },
+          // hover states
+          '& .MuiListItemButton-root:hover': {
+            bgcolor: '#EEF8FD',
+            '&, & .MuiListItemIcon-root': {
+              color: '#00A3FF',
+            },
+          },
+        }}>
+        <StyledLink to="/logout">
+          <ListItem disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                {
-                  [
-                    <img src={settings} alt="Settings" />,
-                    <img src={contactus} alt="Contact Us" />,
-                    <img src={feedback} alt="Feedback" />,
-                  ][index]
-                }
+                <img src={logout} alt="Logout" />
               </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText sx={{ color: 'secondary.main' }} primary="Logout" />
             </ListItemButton>
-          </ListItem>
-        ))}
+          </ListItem>          
+        </StyledLink>
       </List>
     </div>
   );
@@ -105,6 +250,8 @@ function LeftDrawer(props) {
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
+          background: 'transparent',
+          boxShadow: 'none',
         }}
       >
         <Toolbar>
@@ -117,9 +264,15 @@ function LeftDrawer(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Responsive drawer
+          <Typography
+            variant="h6"
+            noWrap
+            component="div"
+            sx={{ fontWeight: 'bold' }}
+          >
+            {title}
           </Typography>
+          <IOSSwitch sx={{ ml: 'auto' }} defaultChecked />
         </Toolbar>
       </AppBar>
       <Box
@@ -169,35 +322,7 @@ function LeftDrawer(props) {
         }}
       >
         <Toolbar />
-        <Typography paragraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus
-          dolor purus non enim praesent elementum facilisis leo vel. Risus at
-          ultrices mi tempus imperdiet. Semper risus in hendrerit gravida rutrum
-          quisque non tellus. Convallis convallis tellus id interdum velit
-          laoreet id donec ultrices. Odio morbi quis commodo odio aenean sed
-          adipiscing. Amet nisl suscipit adipiscing bibendum est ultricies
-          integer quis. Cursus euismod quis viverra nibh cras. Metus vulputate
-          eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo
-          quis imperdiet massa tincidunt. Cras tincidunt lobortis feugiat
-          vivamus at augue. At augue eget arcu dictum varius duis at consectetur
-          lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa sapien
-          faucibus et molestie ac.
-        </Typography>
-        <Typography paragraph>
-          Consequat mauris nunc congue nisi vitae suscipit. Fringilla est
-          ullamcorper eget nulla facilisi etiam dignissim diam. Pulvinar
-          elementum integer enim neque volutpat ac tincidunt. Ornare suspendisse
-          sed nisi lacus sed viverra tellus. Purus sit amet volutpat consequat
-          mauris. Elementum eu facilisis sed odio morbi. Euismod lacinia at quis
-          risus sed vulputate odio. Morbi tincidunt ornare massa eget egestas
-          purus viverra accumsan in. In hendrerit gravida rutrum quisque non
-          tellus orci ac. Pellentesque nec nam aliquam sem et tortor. Habitant
-          morbi tristique senectus et. Adipiscing elit duis tristique
-          sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis
-          eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
-          posuere sollicitudin aliquam ultrices sagittis orci a.
-        </Typography>
+        {page}
       </Box>
     </Box>
   );
