@@ -1,13 +1,15 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@font-face {
+  font-family: "lexend";
+  src: url("./resources//fonts/lexend.woff2") format("woff2"),
+    url("./resources//fonts//lexend.woff") format("woff");
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  font-family: "lexend", Fallback, sans-serif;
+  background-color: #F4F7FF !important;
+}
+
+.MuiDrawer-paper {
+  border-radius: 0px 35px 35px 0px;
+  border: none !important;
 }
