@@ -88,7 +88,7 @@ function App() {
     },
     typography: {
       fontFamily: 'lexend',
-    },
+    }
   });
 
   return (

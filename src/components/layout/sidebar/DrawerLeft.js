@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -31,10 +31,11 @@ import applogo2 from '../../../resources/app-logo-2.png';
 import { styled as styledComp } from '@mui/material/styles';
 import Switch from '@mui/material/Switch';
 
-const drawerWidth = 240;
+const drawerWidth = 250;
 
 function LeftDrawer(props) {
   const { window, title, page } = props;
+  const { pathname } = useLocation();
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
@@ -42,7 +43,7 @@ function LeftDrawer(props) {
   };
 
   const Image = styled.img`
-    margin: 3rem 0 3rem 0;
+    margin: 2rem 0 2rem 0;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -51,7 +52,6 @@ function LeftDrawer(props) {
 
   const StyledLink = styledComp(Link)`
     text-decoration: none;
-
     &:focus, &:hover, &:visited, &:link, &:active {
         text-decoration: none;
     }
@@ -119,19 +119,28 @@ function LeftDrawer(props) {
       </Toolbar>
       <List
         sx={{
+          padding: 1,
           // selected and (selected + hover) states
           '&& .Mui-selected, && .Mui-selected:hover': {
-            bgcolor: '#EEF8FD',
-            '&, & .MuiListItemIcon-root': {
+          bgcolor: '#EEF8FD',
+          borderRadius: '8px',
+            '&': {
               color: '#00A3FF',
             },
+            ' & .MuiListItemIcon-root': {
+              filter: 'invert(45%) sepia(57%) saturate(2570%) hue-rotate(176deg) brightness(101%) contrast(107%)'
+            }
           },
           // hover states
           '& .MuiListItemButton-root:hover': {
             bgcolor: '#EEF8FD',
-            '&, & .MuiListItemIcon-root': {
+            borderRadius: '8px',
+            '&': {
               color: '#00A3FF',
             },
+            ' & .MuiListItemIcon-root': {
+              filter: 'invert(45%) sepia(57%) saturate(2570%) hue-rotate(176deg) brightness(101%) contrast(107%)'
+            }
           },
         }}>
         {[
@@ -144,7 +153,7 @@ function LeftDrawer(props) {
           { link: '/blogs', text: 'Blogs' },
         ].map((data, index) => (
           <StyledLink to={data.link} key={index}>
-            <ListItem sx={{ color: 'secondary.main' }} disablePadding>
+            <ListItem selected={data.link === pathname} sx={{ mt: 1, color: 'secondary.main' }} disablePadding>
               <ListItemButton>
                 <ListItemIcon>
                   {
@@ -168,19 +177,28 @@ function LeftDrawer(props) {
       <Divider />
       <List
         sx={{
+          padding: 1,
           // selected and (selected + hover) states
           '&& .Mui-selected, && .Mui-selected:hover': {
             bgcolor: '#EEF8FD',
-            '&, & .MuiListItemIcon-root': {
+            borderRadius: '8px',
+            '&': {
               color: '#00A3FF',
             },
+            ' & .MuiListItemIcon-root': {
+              filter: 'invert(45%) sepia(57%) saturate(2570%) hue-rotate(176deg) brightness(101%) contrast(107%)'
+            }
           },
           // hover states
           '& .MuiListItemButton-root:hover': {
             bgcolor: '#EEF8FD',
-            '&, & .MuiListItemIcon-root': {
+            borderRadius: '8px',
+            '&': {
               color: '#00A3FF',
             },
+            ' & .MuiListItemIcon-root': {
+              filter: 'invert(45%) sepia(57%) saturate(2570%) hue-rotate(176deg) brightness(101%) contrast(107%)'
+            }
           },
         }}
       >
@@ -190,7 +208,7 @@ function LeftDrawer(props) {
           { link: '/feedback', text: 'Feedback' },
         ].map((data, index) => (
           <StyledLink to={data.link} key={index}>
-            <ListItem sx={{ color: 'secondary.main' }} disablePadding>
+            <ListItem selected={data.link === pathname} sx={{ mt: 1, color: 'secondary.main' }} disablePadding>
               <ListItemButton>
                 <ListItemIcon>
                   {
@@ -209,24 +227,27 @@ function LeftDrawer(props) {
       </List>
       <List
         sx={{
+          padding: 1,
           mt: 5,
           // selected and (selected + hover) states
           '&& .Mui-selected, && .Mui-selected:hover': {
             bgcolor: '#EEF8FD',
-            '&, & .MuiListItemIcon-root': {
+            borderRadius: '8px',
+            '&': {
               color: '#00A3FF',
             },
           },
           // hover states
           '& .MuiListItemButton-root:hover': {
             bgcolor: '#EEF8FD',
-            '&, & .MuiListItemIcon-root': {
+            borderRadius: '8px',
+            '&': {
               color: '#00A3FF',
             },
           },
         }}>
         <StyledLink to="/logout">
-          <ListItem disablePadding>
+          <ListItem selected={'/logout' === pathname} disablePadding>
             <ListItemButton>
               <ListItemIcon>
                 <img src={logout} alt="Logout" />
@@ -254,7 +275,7 @@ function LeftDrawer(props) {
           boxShadow: 'none',
         }}
       >
-        <Toolbar>
+        <Toolbar sx={{ backdropFilter: 'blur(8px)' }}>
           <IconButton
             color="inherit"
             aria-label="open drawer"

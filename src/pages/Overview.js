@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { lazy } from 'react';
 import DrawerLeft from '../components/layout/sidebar/DrawerLeft';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import { Card, Grid, Chip, Typography } from '@mui/material';
+import { retry } from '../utils/CommonFunctions';
+import FullCalendar from '@fullcalendar/react' // must go before plugins
+import dayGridPlugin from '@fullcalendar/daygrid'
+const OverviewChart = lazy(() => retry(() => import('../components/charts/OverviewChart')));
 
 const Overview = () => {
   const renderData = (
@@ -98,10 +102,15 @@ const Overview = () => {
           columnSpacing={{ xs: 1, sm: 2, md: 4 }}
         >
           <Grid item xs={12} lg={8}>
-            <Card>Chart</Card>
+            <Card><OverviewChart /></Card>
           </Grid>
           <Grid item xs={12} lg>
-            <Card>Calender</Card>
+            <Card>
+              <FullCalendar
+                plugins={[dayGridPlugin]}
+                initialView="dayGridMonth"
+              />
+            </Card>
           </Grid>
         </Grid>
       </div>

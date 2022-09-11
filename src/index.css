@@ -29,3 +29,7 @@ body {
 .MuiChip-root .MuiSvgIcon-root {
   padding: 1.5px;
 }
+
+.green  {
+  color: #0CC27C;
+}
