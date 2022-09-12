@@ -33,14 +33,15 @@ const Overview = () => {
   const renderData = (
     <>
       <div>
-        <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 4 }}>
+        <Grid container rowSpacing={2} columnSpacing={2}>
           <Grid item xs>
-            <Card>
+            <Card sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
               <Typography sx={{ color: 'primary.main', fontWeight: 'bold' }}>
                 Total Anuual Income
               </Typography>
+              <div>
               <Typography variant="h5" sx={{ fontWeight: 'bold', mt: 1.5 }}>
-                $ 10994.78
+                $10994.78
               </Typography>
               <Chip
                 sx={{ mt: 1.5 }}
@@ -48,15 +49,17 @@ const Overview = () => {
                 color="success"
                 label="+ 15%"
               />
+              </div>
             </Card>
           </Grid>
           <Grid item xs>
-            <Card>
+            <Card sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
               <Typography sx={{ color: 'primary.main', fontWeight: 'bold' }}>
                 Total Monthly Income
               </Typography>
+              <div>
               <Typography variant="h5" sx={{ fontWeight: 'bold', mt: 1.5 }}>
-                $ 137.43
+                $137.43
               </Typography>
               <Chip
                 sx={{ mt: 1.5 }}
@@ -64,15 +67,17 @@ const Overview = () => {
                 color="success"
                 label="+ 12%"
               />
+              </div>
             </Card>
           </Grid>
           <Grid item xs>
-            <Card>
+            <Card sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
               <Typography sx={{ color: 'primary.main', fontWeight: 'bold' }}>
                 Total Per Day Income
               </Typography>
+              <div>
               <Typography variant="h5" sx={{ fontWeight: 'bold', mt: 1.5 }}>
-                $ 4.67
+                $4.67
               </Typography>
               <Chip
                 sx={{ mt: 1.5 }}
@@ -80,14 +85,16 @@ const Overview = () => {
                 color="success"
                 label="+ 8%"
               />
+              </div>
             </Card>
           </Grid>
           <Grid item xs>
-            <Card>
+            <Card sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
               <Typography sx={{ color: 'primary.main', fontWeight: 'bold' }}>
                 Yield
               </Typography>
-              <Typography variant="h5" sx={{ fontWeight: 'bold', mt: 1.5 }}>
+              <div>
+              <Typography variant="h5" sx={{ mt: 1.5, fontWeight: 'bold' }}>
                 2.67 %
               </Typography>
               <Chip
@@ -96,10 +103,11 @@ const Overview = () => {
                 color="success"
                 label="+ 1.26%"
               />
+              </div>
             </Card>
           </Grid>
           <Grid item xs>
-            <Card>
+            <Card sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
               <Grid container>
                 <Grid item xs>
                   <Typography
@@ -114,22 +122,24 @@ const Overview = () => {
                   </IconButton>
                 </Grid>
               </Grid>
-              <Typography sx={{ mt: 2, color: grey[500] }}>
+              <div>
+              <Typography sx={{ mt: 1.5, color: grey[500] }}>
                 60% Reached ($6000)
               </Typography>
               <BorderLinearProgress variant="determinate" value={50} />
               <Grid container>
                 <Grid item xs>
-                  <Typography sx={{ fontWeight: 'bold' }}>$ 0</Typography>
+                  <Typography sx={{ fontWeight: 'bold' }}>$0</Typography>
                 </Grid>
                 <Grid item>
                   <Typography
                     sx={{ color: 'primary.main', fontWeight: 'bold' }}
                   >
-                    $ 10000
+                    $10000
                   </Typography>
                 </Grid>
               </Grid>
+              </div>
             </Card>
           </Grid>
         </Grid>

@@ -9,7 +9,7 @@ const Blogs = () => {
   const renderData = (
     <div>
       <Grid container rowSpacing={3} columnSpacing={{ xs: 1, sm: 2, md: 4 }}>
-        <Grid item md={6} xs={12}>
+        <Grid item md={4} sm={6} xs={12}>
           <Card sx={{ p: '0 !important' }}>
             <CardActionArea>
               <CardMedia
@@ -29,7 +29,7 @@ const Blogs = () => {
             </CardActionArea>
           </Card>
         </Grid>
-        <Grid item md={6} xs={12}>
+        <Grid item md={4} sm={6} xs={12}>
           <Card sx={{ p: '0 !important' }}>
             <CardActionArea>
               <CardMedia
@@ -49,7 +49,7 @@ const Blogs = () => {
             </CardActionArea>
           </Card>
         </Grid>
-        <Grid item md={6} xs={12}>
+        <Grid item md={4} sm={6} xs={12}>
           <Card sx={{ p: '0 !important' }}>
             <CardActionArea>
               <CardMedia
@@ -69,7 +69,7 @@ const Blogs = () => {
             </CardActionArea>
           </Card>
         </Grid>
-        <Grid item md={6} xs={12}>
+        <Grid item md={4} sm={6} xs={12}>
           <Card sx={{ p: '0 !important' }}>
             <CardActionArea>
               <CardMedia
@@ -89,7 +89,7 @@ const Blogs = () => {
             </CardActionArea>
           </Card>
         </Grid>
-        <Grid item md={6} xs={12}>
+        <Grid item md={4} sm={6} xs={12}>
           <Card sx={{ p: '0 !important' }}>
             <CardActionArea>
               <CardMedia
@@ -109,7 +109,7 @@ const Blogs = () => {
             </CardActionArea>
           </Card>
         </Grid>
-        <Grid item md={6} xs={12}>
+        <Grid item md={4} sm={6} xs={12}>
           <Card sx={{ p: '0 !important' }}>
             <CardActionArea>
               <CardMedia
@@ -129,7 +129,7 @@ const Blogs = () => {
             </CardActionArea>
           </Card>
         </Grid>
-        <Grid item md={6} xs={12}>
+        <Grid item md={4} sm={6} xs={12}>
           <Card sx={{ p: '0 !important' }}>
             <CardActionArea>
               <CardMedia
@@ -149,7 +149,7 @@ const Blogs = () => {
             </CardActionArea>
           </Card>
         </Grid>
-        <Grid item md={6} xs={12}>
+        <Grid item md={4} sm={6} xs={12}>
           <Card sx={{ p: '0 !important' }}>
             <CardActionArea>
               <CardMedia
@@ -169,7 +169,7 @@ const Blogs = () => {
             </CardActionArea>
           </Card>
         </Grid>
-        <Grid item md={6} xs={12}>
+        <Grid item md={4} sm={6} xs={12}>
           <Card sx={{ p: '0 !important' }}>
             <CardActionArea>
               <CardMedia
@@ -189,7 +189,7 @@ const Blogs = () => {
             </CardActionArea>
           </Card>
         </Grid>
-        <Grid item md={6} xs={12}>
+        <Grid item md={4} sm={6} xs={12}>
           <Card sx={{ p: '0 !important' }}>
             <CardActionArea>
               <CardMedia
@@ -209,7 +209,7 @@ const Blogs = () => {
             </CardActionArea>
           </Card>
         </Grid>
-        <Grid item md={6} xs={12}>
+        <Grid item md={4} sm={6} xs={12}>
           <Card sx={{ p: '0 !important' }}>
             <CardActionArea>
               <CardMedia
@@ -229,7 +229,7 @@ const Blogs = () => {
             </CardActionArea>
           </Card>
         </Grid>
-        <Grid item md={6} xs={12}>
+        <Grid item md={4} sm={6} xs={12}>
           <Card sx={{ p: '0 !important' }}>
             <CardActionArea>
               <CardMedia
@@ -249,7 +249,7 @@ const Blogs = () => {
             </CardActionArea>
           </Card>
         </Grid>
-        <Grid item md={6} xs={12}>
+        <Grid item md={4} sm={6} xs={12}>
           <Card sx={{ p: '0 !important' }}>
             <CardActionArea>
               <CardMedia
