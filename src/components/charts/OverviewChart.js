@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -11,10 +11,9 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import { Typography } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
 import styled from 'styled-components';
 import NorthIcon from '@mui/icons-material/North';
-import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
@@ -26,9 +25,9 @@ const OverviewChart = () => {
     setAge(event.target.value);
   };
   const H1 = styled.h1`
-margin: 0;
-padding: 0;
-display: inline;
+    margin: 0;
+    padding: 0;
+    display: inline;
   `;
 
   ChartJS.register(
@@ -55,7 +54,7 @@ display: inline;
     scales: {
       x: {
         grid: {
-          display: false
+          display: false,
         },
         ticks: {
           font: {
@@ -67,7 +66,7 @@ display: inline;
       y: {
         suggestedMax: 1000,
         grid: {
-          display: false
+          display: false,
         },
         beginAtZero: true,
         ticks: {
@@ -75,13 +74,20 @@ display: inline;
           font: {
             family: 'lexend', // Your font family
             size: 14,
-          }
+          },
         },
-      }
-    }
+      },
+    },
   };
 
-  const labels = ['1, Jan 2022', '2, Jan 2022', '3, Jan 2022', '4, Jan 2022', '5, Jan 2022', '6, Jan 2022'];
+  const labels = [
+    '1, Jan 2022',
+    '2, Jan 2022',
+    '3, Jan 2022',
+    '4, Jan 2022',
+    '5, Jan 2022',
+    '6, Jan 2022',
+  ];
 
   const data = {
     labels,
@@ -99,28 +105,33 @@ display: inline;
 
   return (
     <>
-    <Typography variant='h6'>
-      Total Value
-    </Typography>
-    <div>
-    <H1>$80,647.78</H1><span className='green'><NorthIcon sx={{ padding: 0.5, pb: 0 }} />$75,234.96(+98%)</span>
-    <FormControl sx={{ float: 'right', minWidth: 120 }}>
-  <Select
-    labelId="demo-simple-select-label"
-    id="demo-simple-select"
-    value={age}
-    displayEmpty
-    onChange={handleChange}
-  >
-    <MenuItem value={10}>Last Week</MenuItem>
-    <MenuItem value={20}>Last Month</MenuItem>
-    <MenuItem value={30}>Last Year</MenuItem>
-  </Select>
-</FormControl>
-</div>
-    <Line options={options} data={data} />
+      <Typography variant="h6">Total Value</Typography>
+      <Grid sx={{ mb: 3 }} container spacing={2}>
+        <Grid item xs>
+        <H1>$80,647.78</H1>
+        <span className="green">
+          <NorthIcon sx={{ padding: 0.5, pb: 0 }} />
+          $75,234.96(+98%)
+        </span>
+        </Grid>
+        <Grid item>
+        <FormControl sx={{ minWidth: 120 }}>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={age}
+            onChange={handleChange}
+          >
+            <MenuItem value={10}>Last Week</MenuItem>
+            <MenuItem value={20}>Last Month</MenuItem>
+            <MenuItem value={30}>Last Year</MenuItem>
+          </Select>
+        </FormControl>
+        </Grid>
+      </Grid>
+      <Line options={options} data={data} />
     </>
-  )
-}
+  );
+};
 
-export default OverviewChart
+export default OverviewChart;
